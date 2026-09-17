@@ -7,6 +7,7 @@ public class Book {
     private String genre;
     private int publicationYear;
     private boolean isAvailable;
+
     Book(String isbn, String title, String author, String genre, int publicationYear, boolean isAvailable){
      this.isbn= isbn;
      this.title= title;
