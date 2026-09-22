@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Library {
     ArrayList<Book> bookArrayList= new ArrayList<>();
     ArrayList<Student> studentArrayList= new ArrayList<>();
+
     public void addBook(Book book){
       bookArrayList.add(book);
     }
@@ -12,9 +13,24 @@ public class Library {
     public void addStudent(Student student){
       studentArrayList.add(student);
     }
+
     public void printAllBooks(){
-    for (Book b: bookArrayList){
-        System.out.println(b);
+        if (!bookArrayList.isEmpty()) {
+            System.out.println("List of All Books:---");
+            for (Book b : bookArrayList) {
+                System.out.println(b);
+            }
+        }
+        else {
+            System.out.println("No book found.");
+        }
     }
+    public Book findBookByIsbn(String isbn) {
+        for (Book b : bookArrayList) {
+            if (b.getIsbn().equals(isbn)) {
+                return b;
+            }
+        }
+        return null;
     }
 }

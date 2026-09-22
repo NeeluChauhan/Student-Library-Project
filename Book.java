@@ -9,12 +9,12 @@ public class Book {
     private boolean isAvailable;
 
     Book(String isbn, String title, String author, String genre, int publicationYear, boolean isAvailable){
-     this.isbn= isbn;
-     this.title= title;
-     this.author= author;
-     this.genre= genre;
-     this.publicationYear= publicationYear;
-     this.isAvailable= isAvailable;
+        this.isbn= isbn;
+        this.title= title;
+        this.author= author;
+        this.genre= genre;
+        this.publicationYear= publicationYear;
+        this.isAvailable= isAvailable;
     }
     public String getIsbn(){ return isbn; }
     public String getTitle(){ return title; }
@@ -35,3 +35,4 @@ public class Book {
         return "[" +getIsbn()+ "] " +getTitle()+ " by " +getAuthor()+ "( " +getGenre()+ "," +getPublicationYear()+ " ) - " +(getIsAvailable()? "Available" : "Borrowed");
     }
 }
+

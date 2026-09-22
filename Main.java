@@ -1,52 +1,105 @@
 package LibraryManagement;
-
 import java.util.Scanner;
 
 public class Main {
+    Scanner sc= new Scanner(System.in);
 
-    public static void main(String[] args) {
-        Scanner sc= new Scanner(System.in);
-        Library library = new Library();
-        while (true) {
+    public Book inputToAddBook() {
             System.out.print("Enter ISBN: ");
-            String isbn = sc.nextLine();
+           String isbn = sc.nextLine();
             if (!LibraryValidator.isValidIsbn(isbn)) {
-                System.out.println("ISBN must be 10 or 13 digits. Book not created.");
-                return;
+                return null;
             }
+
             System.out.print("Enter Title: ");
-            String title = sc.nextLine();
+        String title = sc.nextLine();
             if (!LibraryValidator.isValidTitle(title)) {
-                System.out.println("Title must be at least 2 character. Book not created.");
-                return;
+                return null;
             }
+
             System.out.print("Enter Author: ");
-            String author = sc.nextLine();
+        String author = sc.nextLine();
             if (!LibraryValidator.isValidAuthor(author)) {
-                System.out.println("Author must be at least 2 character. Book not created.");
-                return;
+                return null;
             }
+
             System.out.print("Enter genre: ");
-            String genre = sc.nextLine();
+        String genre = sc.nextLine();
+
             System.out.print("Enter year: ");
-            int publicationYear = sc.nextInt();
+        int publicationYear = sc.nextInt();
             sc.nextLine();
             if (!LibraryValidator.isValidYear(publicationYear)) {
-                System.out.println("Year must be between 1800 to 2026. Book not created.");
-                return;
+                return null;
             }
-            boolean isAvailable = true;
+        boolean isAvailable = true;
+            return new Book(isbn, title, author, genre, publicationYear, isAvailable);
+    }
 
-            Book book = new Book(isbn, title, author, genre, publicationYear, isAvailable);
-           library.addBook(book);
-            System.out.println(book);
-            System.out.println("Book added successfully.");
-            System.out.print("Do you want to add another book? yes or no: ");
-            String input= sc.nextLine();
-            if (!input.equalsIgnoreCase("yes")){
-                System.out.println("Thank you! Visit again.");
-                break;
+    public void editBook(Book book){
+        System.out.print("Enter new title (Press enter to skip): ");
+        String newTitle= sc.nextLine();
+        if (!newTitle.isEmpty()) {
+            book.setTitle(newTitle);
+        }
+        System.out.print("Enter new author (Press enter to skip): ");
+        String newAuthor= sc.nextLine();
+        if (!newAuthor.isEmpty()) {
+            book.setAuthor(newAuthor);
+        }
+    }
+
+    public static void main(String[] args) {
+        Main main = new Main();
+        Library library = new Library();
+
+        while (true) {
+            System.out.println("What you want to do: ");
+            System.out.println("1. Add Book");
+            System.out.println("2. Show All Books");
+            System.out.println("3. Edit Book");
+            System.out.print("Pres 0 to Exit.");
+            int input = main.sc.nextInt();
+            main.sc.nextLine();
+            switch (input) {
+                case 1:
+                    Book book = main.inputToAddBook();
+                    if (book != null) {
+                        library.addBook(book);
+                        System.out.println("Book added successfully.");
+                        System.out.println("--------------------------");
+                    }
+                    break;
+
+                case 2:
+                    library.printAllBooks();
+                    break;
+
+                case 3:
+                    System.out.println("Enter ISBN to edit: ");
+                    String newIsbn = main.sc.nextLine();
+                    if (LibraryValidator.isValidIsbn(newIsbn)) {
+                        Book bookToEdit = library.findBookByIsbn(newIsbn);
+                        if (bookToEdit!=null) {
+                            System.out.println("[Editing]:" +bookToEdit);
+                            main.editBook(bookToEdit);
+                            System.out.println("Book updated successfully.");
+                        }
+                        else {
+                            System.out.println("Book not found.");
+                        }
+                    }
+                    break;
+
+                case 0:
+                    System.out.println("Thank you! Visit Again.");
+                    return;
+
+                default:
+                    System.out.println("Please enter valid input.");
+
             }
+
         }
 
     }
