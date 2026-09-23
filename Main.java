@@ -59,6 +59,7 @@ public class Main {
             System.out.println("2. Show All Books");
             System.out.println("3. Edit Book");
             System.out.println("4. Delete Book");
+            System.out.println("5. Show Total Book Count");
             System.out.print("Pres 0 to Exit.");
             int input = main.sc.nextInt();
             main.sc.nextLine();
@@ -103,6 +104,10 @@ public class Main {
                             System.out.println("Book not found.");
                         }
                     }
+                    break;
+
+                case 5:
+                    System.out.println("Total books in library: " +library.getTotalBookCount());
                     break;
 
                 case 0:
