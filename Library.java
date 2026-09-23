@@ -6,12 +6,8 @@ public class Library {
     ArrayList<Book> bookArrayList= new ArrayList<>();
     ArrayList<Student> studentArrayList= new ArrayList<>();
 
-    public void addBook(Book book){
-      bookArrayList.add(book);
-    }
-
-    public void addStudent(Student student){
-      studentArrayList.add(student);
+    public boolean addBook(Book book){
+        return bookArrayList.add(book);
     }
 
     public void printAllBooks(){

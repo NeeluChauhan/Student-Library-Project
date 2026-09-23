@@ -4,12 +4,7 @@ import java.util.Scanner;
 public class Main {
     Scanner sc= new Scanner(System.in);
 
-    public Book inputToAddBook() {
-            System.out.print("Enter ISBN: ");
-           String isbn = sc.nextLine();
-            if (!LibraryValidator.isValidIsbn(isbn)) {
-                return null;
-            }
+    public Book inputToAddBook(String isbn) {
 
             System.out.print("Enter Title: ");
         String title = sc.nextLine();
@@ -65,11 +60,21 @@ public class Main {
             main.sc.nextLine();
             switch (input) {
                 case 1:
-                    Book book = main.inputToAddBook();
+                    System.out.print("Enter ISBN: ");
+                    String isbn = main.sc.nextLine();
+                    if (!LibraryValidator.isValidIsbn(isbn)) {
+                        break;
+                    }
+                    if (library.findBookByIsbn(isbn)!=null){
+                        System.out.println("Book with ISBN " +isbn+ " is already exist. Entry skipped.");
+                        break;
+                    }
+                    Book book = main.inputToAddBook(isbn);
                     if (book != null) {
-                        library.addBook(book);
-                        System.out.println("Book added successfully.");
-                        System.out.println("--------------------------");
+                        if (library.addBook(book)){
+                            System.out.println("Book added successfully.");
+                            System.out.println("--------------------------");
+                        }
                     }
                     break;
 
