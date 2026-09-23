@@ -4,12 +4,12 @@ public class LibraryValidator {
 
     public static boolean isValidIsbn(String isbn){
         if (isbn==null){
-            System.out.println("ISBN must be 10 or 13 digits. Book not created.");
+            System.out.println("ISBN must be 10 or 13 digits.");
             return false;
         }
         int length= isbn.trim().length();
         if(length!=10 && length!=13){
-            System.out.println("ISBN must be 10 or 13 digits. Book not created.");
+            System.out.println("ISBN must be 10 or 13 digits.");
             return false;
         }
         return true;

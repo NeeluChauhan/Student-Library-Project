@@ -58,6 +58,7 @@ public class Main {
             System.out.println("1. Add Book");
             System.out.println("2. Show All Books");
             System.out.println("3. Edit Book");
+            System.out.println("4. Delete Book");
             System.out.print("Pres 0 to Exit.");
             int input = main.sc.nextInt();
             main.sc.nextLine();
@@ -76,7 +77,7 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.println("Enter ISBN to edit: ");
+                    System.out.print("Enter ISBN to edit: ");
                     String newIsbn = main.sc.nextLine();
                     if (LibraryValidator.isValidIsbn(newIsbn)) {
                         Book bookToEdit = library.findBookByIsbn(newIsbn);
@@ -84,6 +85,19 @@ public class Main {
                             System.out.println("[Editing]:" +bookToEdit);
                             main.editBook(bookToEdit);
                             System.out.println("Book updated successfully.");
+                        }
+                        else {
+                            System.out.println("Book not found.");
+                        }
+                    }
+                    break;
+
+                case 4:
+                    System.out.print("Enter ISBN to delete: ");
+                    String dISbn= main.sc.nextLine();
+                    if (LibraryValidator.isValidIsbn(dISbn)) {
+                        if (library.deleteBook(dISbn)) {
+                            System.out.println("Book deleted successfully.");
                         }
                         else {
                             System.out.println("Book not found.");

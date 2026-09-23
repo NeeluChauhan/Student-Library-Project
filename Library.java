@@ -33,4 +33,13 @@ public class Library {
         }
         return null;
     }
+
+    public boolean deleteBook(String isbn){
+        Book book= findBookByIsbn(isbn);
+        if (book!=null){
+            bookArrayList.remove(book);
+            return true;
+        }
+       return false;
+    }
 }
