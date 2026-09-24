@@ -42,4 +42,14 @@ public class Library {
     public int getTotalBookCount(){
            return bookArrayList.size();
     }
+
+    public ArrayList<Book> searchBook(String keyword) {
+        ArrayList<Book> matchingBooks= new ArrayList<>();
+        for (Book b : bookArrayList) {
+            if (b.getAuthor().toLowerCase().contains(keyword.toLowerCase()) || b.getTitle().toLowerCase().contains(keyword.toLowerCase())) {
+                matchingBooks.add(b);
+            }
+        }
+        return matchingBooks;
+    }
 }

@@ -1,4 +1,5 @@
 package LibraryManagement;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -55,6 +56,7 @@ public class Main {
             System.out.println("3. Edit Book");
             System.out.println("4. Delete Book");
             System.out.println("5. Show Total Book Count");
+            System.out.println("6. Search Book By Title/Author");
             System.out.print("Pres 0 to Exit.");
             int input = main.sc.nextInt();
             main.sc.nextLine();
@@ -113,6 +115,21 @@ public class Main {
 
                 case 5:
                     System.out.println("Total books in library: " +library.getTotalBookCount());
+                    break;
+
+                case 6:
+                    System.out.print("Enter search keyword: ");
+                    String keyword= main.sc.nextLine();
+                    ArrayList<Book> foundBook= library.searchBook(keyword);
+                    if (!foundBook.isEmpty()){
+                        System.out.println("Found " +foundBook.size()+ " match(es):");
+                        for (Book b: foundBook){
+                            System.out.println(b);
+                        }
+                    }
+                    else{
+                        System.out.println("No book found.");
+                    }
                     break;
 
                 case 0:
