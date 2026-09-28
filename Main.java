@@ -58,6 +58,8 @@ public class Main {
             System.out.println("5. Show Total Book Count");
             System.out.println("6. Search Book By Title/Author");
             System.out.println("7. View Books by Genre");
+            System.out.println("8. Count Books by Genre");
+            System.out.println("9. Sort Books by Title");
             System.out.print("Pres 0 to Exit.");
             int input = main.sc.nextInt();
             main.sc.nextLine();
@@ -135,6 +137,14 @@ public class Main {
 
                 case 7:
                     library.viewBookByGenre();
+                    break;
+
+                case 8:
+                  library.printGenreCounts();
+                    break;
+
+                case 9:
+
                     break;
 
                 case 0:
