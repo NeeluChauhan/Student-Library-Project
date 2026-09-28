@@ -57,6 +57,7 @@ public class Main {
             System.out.println("4. Delete Book");
             System.out.println("5. Show Total Book Count");
             System.out.println("6. Search Book By Title/Author");
+            System.out.println("7. View Books by Genre");
             System.out.print("Pres 0 to Exit.");
             int input = main.sc.nextInt();
             main.sc.nextLine();
@@ -130,6 +131,10 @@ public class Main {
                     else{
                         System.out.println("No book found.");
                     }
+                    break;
+
+                case 7:
+                    library.viewBookByGenre();
                     break;
 
                 case 0:

@@ -52,4 +52,24 @@ public class Library {
         }
         return matchingBooks;
     }
+
+    public void viewBookByGenre(){
+        if (bookArrayList.isEmpty()){
+            System.out.println("No books have been added yet.");
+        }
+    ArrayList<String> genre= new ArrayList<>();
+    for (Book b: bookArrayList){
+        if (!genre.contains(b.getGenre())){
+            genre.add(b.getGenre());
+        }
+    }
+    for (String gen: genre){
+        System.out.println("Genre: " +gen);
+    for (Book b: bookArrayList) {
+        if (b.getGenre().equals(gen)) {
+            System.out.println(b);
+        }
+    }
+    }
+    }
 }
