@@ -113,4 +113,24 @@ public class Library {
            }
        }
     }
+
+    public void sortBooksByYear(){
+        if (bookArrayList.isEmpty()){
+            System.out.println("No books have been added yet.");
+        }
+        ArrayList<Integer> pbYear= new ArrayList<>();
+        for (Book b: bookArrayList){
+            if (!pbYear.contains(b.getPublicationYear())){
+                pbYear.add(b.getPublicationYear());
+            }
+        }
+        Collections.sort(pbYear);
+        for (int py: pbYear){
+            for (Book b: bookArrayList){
+                if (py==b.getPublicationYear()){
+                    System.out.println(b);
+                }
+            }
+        }
+    }
 }

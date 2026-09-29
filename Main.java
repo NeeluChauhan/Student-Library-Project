@@ -60,6 +60,7 @@ public class Main {
             System.out.println("7. View Books by Genre");
             System.out.println("8. Count Books by Genre");
             System.out.println("9. Sort Books by Title");
+            System.out.println("10. Sort Books by Year");
             System.out.print("Pres 0 to Exit.");
             int input = main.sc.nextInt();
             main.sc.nextLine();
@@ -146,6 +147,11 @@ public class Main {
                 case 9:
                     System.out.println("Sorting books by title: ");
                     library.sortBooksByTitle();
+                    break;
+
+                case 10:
+                    System.out.println("Sorting books by year: ");
+                    library.sortBooksByYear();
                     break;
 
                 case 0:
