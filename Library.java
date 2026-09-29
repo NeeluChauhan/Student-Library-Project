@@ -1,7 +1,7 @@
 package LibraryManagement;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 
 public class Library {
     ArrayList<Book> bookArrayList= new ArrayList<>();
@@ -92,5 +92,25 @@ public class Library {
          }
          System.out.println(gen+ "=" +count);
      }
+    }
+
+    public void sortBooksByTitle(){
+        if (bookArrayList.isEmpty()){
+            System.out.println("No books have been added yet.");
+        }
+        ArrayList<String> title= new ArrayList<>();
+        for (Book b: bookArrayList){
+            if (!title.contains(b.getTitle())){
+                title.add(b.getTitle());
+            }
+        }
+        Collections.sort(title);
+       for (String title1: title){
+           for (Book b: bookArrayList){
+               if (title1.equals(b.getTitle())){
+                   System.out.println(b);
+               }
+           }
+       }
     }
 }

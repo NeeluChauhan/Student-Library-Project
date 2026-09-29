@@ -144,7 +144,8 @@ public class Main {
                     break;
 
                 case 9:
-
+                    System.out.println("Sorting books by title: ");
+                    library.sortBooksByTitle();
                     break;
 
                 case 0:
